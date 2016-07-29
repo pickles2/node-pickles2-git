@@ -1,0 +1,25 @@
+{
+  "name": "pickles2-git",
+  "version": "0.0.1-alpha.1",
+  "description": "",
+  "main": "node/main.js",
+  "scripts": {
+    "test": "mocha --ui tdd ./tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pickles2/node-pickles2-git.git"
+  },
+  "keywords": [
+    "pickles"
+  ],
+  "author": "Tomoya Koyanagi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pickles2/node-pickles2-git/issues"
+  },
+  "homepage": "https://github.com/pickles2/node-pickles2-git#readme",
+  "dependencies": {
+    "node-php-bin": "^0.2.4"
+  }
+}
