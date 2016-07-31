@@ -1,0 +1,4 @@
+"* path","* content","* id","* title","* title_breadcrumb","* title_h1","* title_label","* title_full","* logical_path","* list_flg","* layout","* orderby","* keywords","* description","* category_top_flg","* **delete_flg"
+"/index.html",,,"Home",,,,,,"1","top",,,,,
+"/style_guide/index.html",,,"Style Guide",,,,,,"1",,,"sample, サンプル","このページはPxFWのサンプルコードとして予め用意されたものです。サンプルが不要であれば、sample_pagesディレクトリとともに削除してください。","1",
+"/edit_sample/index.html",,,"Edit Sample",,,,,,"1",,,"sample, サンプル","このページはPxFWのサンプルコードとして予め用意されたものです。サンプルが不要であれば、sample_pagesディレクトリとともに削除してください。","1",

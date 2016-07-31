@@ -1,0 +1,35 @@
+{
+    "name": "pickles2/px2-remove-attr",
+    "description": "px2-remove-attr は、Pickles 2 に、HTMLドキュメントから指定した属性を削除する機能を提供します。",
+    "keywords": ["pickles"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tomoya Koyanagi",
+            "email": "tomk79@gmail.com"
+        }
+    ],
+    "scripts":{
+        "test": [
+            "php ./vendor/phpunit/phpunit/phpunit"
+        ]
+    } ,
+    "repositories": [
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "pickles2/px-fw-2.x": "2.0.*",
+        "pickles2/broccoli-module-fess": "dev-master",
+        "pickles2/broccoli-module-plain-html-elements": "dev-master",
+        "pickles2/px2-sitemapexcel": "2.*",
+        "pickles2/px2-px2dthelper": "dev-master",
+        "phpunit/phpunit": "4.1.*"
+    },
+    "autoload": {
+        "files": [
+            "php/main.php"
+        ]
+    }
+}

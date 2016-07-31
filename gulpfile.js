@@ -1,3 +1,4 @@
+var conf = require('config');
 var gulp = require('gulp');
 var sass = require('gulp-sass');//CSSコンパイラ
 var autoprefixer = require("gulp-autoprefixer");//CSSにベンダープレフィックスを付与してくれる
@@ -72,6 +73,11 @@ gulp.task("pickles2-git.js", function() {
 // src 中のすべての拡張子を監視して処理
 gulp.task("watch", function() {
 	gulp.watch(["src/**/*","libs/**/*","tests/testdata/htdocs/index_files/main.src.js"], _tasks);
+});
+
+// ブラウザを立ち上げてプレビューする
+gulp.task("preview", function() {
+	require('child_process').spawn('open',[conf.origin+'/']);
 });
 
 // src 中のすべての拡張子を処理(default)

@@ -1,0 +1,56 @@
+<?php ob_start(); ?>
+<!-- CSSの記述 -->
+<style type="text/css">
+@import '<?= htmlspecialchars($px->path_files('contents.css')); ?>';
+@import '<?= htmlspecialchars($px->path_files('contents.css#hoge')); ?>' all;
+@import "<?= htmlspecialchars($px->path_files('contents.css?time=1234567890#hoge')); ?>";
+@import "<?= htmlspecialchars($px->path_files('contents.css')); ?>" all;
+@import './index_files/contents.css';
+@import './index_files/contents.css#hoge' all;
+@import "./index_files/contents.css?time=1234567890#hoge";
+@import "./index_files/contents.css" all;
+.contents .cont_hoge{
+    background-image:url ( <?= htmlspecialchars($px->path_files('image.png')); ?> );
+    background-image:url ("<?= htmlspecialchars($px->path_files('image.png')); ?>");
+    background-image:url ('<?= htmlspecialchars($px->path_files('image.png')); ?>');
+    background-image:url(./index_files/image.css);
+    background-image:url("./index_files/image.css");
+    background-image:url('./index_files/image.css');
+}
+</style>
+<!-- CSSを外部化する場合 -->
+<link rel="stylesheet" href="./index_files/contents.css" type="text/css" />
+<link rel="stylesheet" href="<?= htmlspecialchars($px->path_files('contents.css')); ?>" type="text/css" />
+<?php $px->bowl()->send( ob_get_clean(), 'head' ); ?>
+
+
+<p>
+	<a href="../index.html?from=back">トップページへ戻る</a><br />
+	<a href="<?= htmlspecialchars('/index.html?from=back'); ?>">トップページへ戻る</a><br />
+</p>
+<p>
+	このディレクトリに配置されているファイルは、コンテンツのサンプルコード集です。<br />
+</p>
+
+<!-- autoindex -->
+
+<h2>サイトマップCSV</h2>
+<p>
+	これらのサンプルコードは、サイトマップCSVに定義されています。サイトマップCSVは次のパスに配置されています。<br />
+</p>
+<ul><li><code>./_PX/sitemaps/sitemap.csv</code></li></ul>
+<p>
+	このファイル3行目以降は、サンプルページについて定義しています。<br />
+</p>
+<p>
+	この定義と見比べながら、サイトマップの設定がページにどのように影響するか、ブラウザで確認しながら見比べてみてください。<br />
+	サイトマップの値を変更してみながら、画面の変化を観察すると、より理解しやすいと思います。<br />
+</p>
+
+<h2>コーディング規則 と ドキュメントモジュール定義</h2>
+<p>
+	Pickles Framework では、 <a href="https://github.com/tomk79/FESS" target="_blank">FESS</a> が規定するコーディング規則およびドキュメントモジュール定義を利用しています。詳しい内容は次のページに同梱していますので、参照してみてください。<br />
+</p>
+<ul>
+	<li><a href="./fess/">FESSドキュメント</a></li>
+</ul>
