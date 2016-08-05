@@ -9,6 +9,16 @@ module.exports = function( px, pj ) {
 	var path_px2git = require('path').resolve(__dirname+'/../common/php/git/px2-git.php');
 	var entryScript = require('path').resolve(pj.get('path'), pj.get('entry_script'));
 
+	/**
+	 * initialize
+	 * @return {[type]} [description]
+	 */
+	this.init = function(options, callback){
+		callback = callback || function(){}
+		callback();
+		return;
+	}
+
 	function apiGen(apiName){
 		return new (function(apiName){
 			this.fnc = function(options, callback){

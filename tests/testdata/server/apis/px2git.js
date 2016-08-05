@@ -8,11 +8,18 @@ module.exports = function(){
 	return function(req, res, next){
 		console.log(req.body);
 
-		res
-			.status(200)
-			.set('Content-Type', 'text/json')
-			.send( JSON.stringify(null) )
-			.end();
+		var px2Git = new Px2Git();
+		px2Git.init(
+			{},
+			function(){
+				res
+					.status(200)
+					.set('Content-Type', 'text/json')
+					.send( JSON.stringify(null) )
+					.end();
+			}
+		);
+
 
 		return;
 	}

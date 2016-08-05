@@ -4,9 +4,9 @@
 var pickles2Git = {};
 pickles2Git = function(){
 	var _this = this;
-	this.px = px;
-	this.pj = pj;
-	this.git = pj.git();
+	// this.px = px;
+	// this.pj = pj;
+	// this.git = pj.git();
 	var divDb = {
 		'sitemaps':{
 			'label':'サイトマップ'
@@ -15,6 +15,15 @@ pickles2Git = function(){
 			'label':'コンテンツ'
 		}
 	};
+
+	/**
+	 * initialize
+	 */
+	this.init = function(options, callback){
+		callback = callback || function(){}
+		callback();
+		return;
+	}
 
 	/**
 	 * コミットログの日付表現の標準化
