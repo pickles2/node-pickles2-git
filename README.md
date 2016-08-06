@@ -12,33 +12,43 @@ $ npm install
 ### Server Side
 
 ```js
+var express = require('express'),
+	app = express();
+var server = require('http').Server(app);
 var Px2Git = require('pickles2-git');
-var px2Git = new Px2Git();
-px2Git.init(
-	{
-		'entryScript': require('path').resolve('/path/to/.px_execute.php')
-	},
-	function(){
-		res
-			.status(200)
-			.set('Content-Type', 'text/json')
-			.send( JSON.stringify(null) )
-			.end();
-	}
-);
+
+app.use( require('body-parser')() );
+app.use( '/your/api/path', function(req, res, next){
+
+	var px2Git = new Px2Git();
+	px2Git.init(
+		{
+			'entryScript': require('path').resolve('/path/to/.px_execute.php')
+		},
+		function(){
+			/*
+			クライアントサイドに設定した GPI(General Purpose Interface) Bridge
+			から送られてきたリクエストは、 `px2Git.gpi` に渡してください。
+			GPIは、処理が終わると、第3引数の関数をコールバックします。
+			コールバック関数の引数を、クライアント側へ返却してください。
+			*/
+
+			px2Git.gpi(JSON.parse(req.body.data), function(value){
+				res
+					.status(200)
+					.set('Content-Type', 'text/json')
+					.send( JSON.stringify(value) )
+					.end();
+			});
+		}
+	);
+
+	return;
+} );
+
+server.listen(8080);
 ```
 
-クライアントサイドに設定した GPI(General Purpose Interface) Bridge から送られてきたリクエストは、 `px2Git.gpi` に渡してください。 GPIは、処理が終わると、第3引数の関数をコールバックします。 コールバック関数の引数を、クライアント側へ返却してください。
-
-```js
-px2Git.gpi(
-    bridge.api,
-    bridge.options,
-    function(result){
-        callback(result);
-    }
-);
-```
 
 ### Client Side
 
@@ -63,14 +73,14 @@ px2git.init(
 			// GPIは、これらのデータ通信を行うための汎用的なAPIです。
 			var rtn = false;
 			$.ajax({
-				'url': '/apis/px2git',
+				'url': '/your/api/path',
 				'data': {
-					'api': 'gpiBridge' ,
-					'bridge': {
+					'data': JSON.stringify({
 						'api': api ,
 						'options': options
-					}
+					})
 				},
+				'method': 'post',
 				'success': function(data){
 					rtn = data;
 				},
@@ -87,6 +97,7 @@ px2git.init(
 );
 </script>
 ```
+
 
 ## ライセンス - License
 

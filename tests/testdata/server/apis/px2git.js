@@ -14,14 +14,17 @@ module.exports = function(){
 				'entryScript': require('path').resolve(__dirname + '/../../px2/.px_execute.php')
 			},
 			function(){
-				res
-					.status(200)
-					.set('Content-Type', 'text/json')
-					.send( JSON.stringify(null) )
-					.end();
+				console.log(req.body.data);
+				px2Git.gpi(JSON.parse(req.body.data), function(value){
+					console.log(value);
+					res
+						.status(200)
+						.set('Content-Type', 'text/json')
+						.send( JSON.stringify(value) )
+						.end();
+				});
 			}
 		);
-
 
 		return;
 	}

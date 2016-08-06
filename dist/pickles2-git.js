@@ -10095,6 +10095,7 @@ pickles2Git = function(){
 	};
 	var cssClassPrefix = 'px2dt-git-commit';
 	var $elmCanvas;
+	var gpiBridge;
 
 	/**
 	 * initialize
@@ -10105,6 +10106,8 @@ pickles2Git = function(){
 
 		$elmCanvas = $(options.elmCanvas || doucment.createElement('div'));
 		$elmCanvas.addClass('px2dt-git-commit');
+
+		gpiBridge = options.gpiBridge || function(){};
 
 		callback();
 		return;
@@ -10262,8 +10265,6 @@ pickles2Git = function(){
 
 		var $ul = $('<ul class="list-group">');
 
-		px.progress.start({'blindness': true, 'showProgressBar': true});
-
 		function getGitLog(div, options, callback){
 			switch( div ){
 				case 'contents':
@@ -10272,9 +10273,16 @@ pickles2Git = function(){
 					});
 					break;
 				case 'sitemaps':
-					_this.git.logSitemaps(function(result, err, code){
-						callback(result, err, code);
-					});
+					gpiBridge(
+						'logSitemaps',
+						{},
+						function(result){
+							callback(result.result, result.err, result.code);
+						}
+					);
+					// _this.git.logSitemaps(function(result, err, code){
+					// 	callback(result, err, code);
+					// });
 					break;
 				default:
 					break;

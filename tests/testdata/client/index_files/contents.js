@@ -11,12 +11,12 @@ $(window).load(function(){
 				$.ajax({
 					'url': '/apis/px2git',
 					'data': {
-						'api': 'gpiBridge' ,
-						'bridge': {
+						'data': JSON.stringify({
 							'api': api ,
 							'options': options
-						}
+						})
 					},
+					'method': 'post',
 					'success': function(data){
 						rtn = data;
 					},
@@ -28,7 +28,9 @@ $(window).load(function(){
 			}
 
 		}, function(){
-			console.log(px2git);
+			px2git.log('sitemaps', {}, function(){
+				console.log(px2git);
+			});
 		}
 	);
 });

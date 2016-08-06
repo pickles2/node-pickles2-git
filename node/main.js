@@ -4,13 +4,13 @@
 module.exports = function() {
 	var _this = this;
 
-	var nodePhpBin = require('node-php-bin');
 	var pathCommands = {
 		'git': 'git'
 	};
 	var utils79 = require('utils79');
 	var path_px2git = require('path').resolve(__dirname+'/../php/git.php');
-	var entryScript;
+	var entryScript,
+		nodePhpBin;
 
 	/**
 	 * initialize
@@ -19,9 +19,30 @@ module.exports = function() {
 	this.init = function(options, callback){
 		callback = callback || function(){}
 		options = options || {};
+
 		entryScript = options.entry_script || null;
+		nodePhpBin = require('node-php-bin').get();
+
 		callback();
 		return;
+	}
+
+	/**
+	 * 汎用API
+	 */
+	this.gpi = function(data, callback){
+		callback = callback||function(){};
+		// this.page_path = data.page_path;
+		// console.log(this.page_path);
+		var gpi = require( __dirname+'/gpi.js' );
+		gpi(
+			this,
+			data,
+			function(rtn){
+				callback(rtn);
+			}
+		);
+		return this;
 	}
 
 	function apiGen(apiName){
