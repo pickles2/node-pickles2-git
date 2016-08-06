@@ -10,7 +10,9 @@ module.exports = function(){
 
 		var px2Git = new Px2Git();
 		px2Git.init(
-			{},
+			{
+				'entryScript': require('path').resolve(__dirname + '/../../px2/.px_execute.php')
+			},
 			function(){
 				res
 					.status(200)

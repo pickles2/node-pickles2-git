@@ -1,13 +1,16 @@
 /**
  * px.project.git
  */
-module.exports = function( px, pj ) {
+module.exports = function() {
 	var _this = this;
 
-	var nodePhpBin = px.nodePhpBin;
-	var utils79 = px.utils79;
-	var path_px2git = require('path').resolve(__dirname+'/../common/php/git/px2-git.php');
-	var entryScript = require('path').resolve(pj.get('path'), pj.get('entry_script'));
+	var nodePhpBin = require('node-php-bin');
+	var pathCommands = {
+		'git': 'git'
+	};
+	var utils79 = require('utils79');
+	var path_px2git = require('path').resolve(__dirname+'/../php/git.php');
+	var entryScript;
 
 	/**
 	 * initialize
@@ -15,6 +18,8 @@ module.exports = function( px, pj ) {
 	 */
 	this.init = function(options, callback){
 		callback = callback || function(){}
+		options = options || {};
+		entryScript = options.entry_script || null;
 		callback();
 		return;
 	}
@@ -34,7 +39,7 @@ module.exports = function( px, pj ) {
 
 				var param = {
 					'method': apiName,
-					'command_git': (px.getDb().commands.git || null),
+					'command_git': (pathCommands.git || null),
 					'entryScript': entryScript,
 					'options': options
 				};

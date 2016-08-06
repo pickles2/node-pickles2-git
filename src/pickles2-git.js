@@ -7,6 +7,7 @@ pickles2Git = function(){
 	// this.px = px;
 	// this.pj = pj;
 	// this.git = pj.git();
+	var $ = require('jquery');
 	var divDb = {
 		'sitemaps':{
 			'label':'サイトマップ'
@@ -15,12 +16,19 @@ pickles2Git = function(){
 			'label':'コンテンツ'
 		}
 	};
+	var cssClassPrefix = 'px2dt-git-commit';
+	var $elmCanvas;
 
 	/**
 	 * initialize
 	 */
 	this.init = function(options, callback){
 		callback = callback || function(){}
+		options = options || {};
+
+		$elmCanvas = $(options.elmCanvas || doucment.createElement('div'));
+		$elmCanvas.addClass('px2dt-git-commit');
+
 		callback();
 		return;
 	}
@@ -59,7 +67,7 @@ pickles2Git = function(){
 	 */
 	this.commit = function( div, options, callback ){
 		callback = callback || function(){};
-		var $body = $('<div class="px2dt-git-commit">');
+
 		var $ul = $('<ul class="list-group">');
 		var $commitComment = $('<textarea>');
 
@@ -109,8 +117,8 @@ pickles2Git = function(){
 				callback();
 				return;
 			}
-			$body.html('');
-			$body.append( $('<p>').text('branch: ').append( $('<code>').text( result.branch ) ) );
+			$elmCanvas.html('');
+			$elmCanvas.append( $('<p>').text('branch: ').append( $('<code>').text( result.branch ) ) );
 			var list = [];
 			if( div == 'contents' ){
 				list = result.changes;
@@ -131,12 +139,12 @@ pickles2Git = function(){
 				;
 				$ul.append( $li );
 			}
-			$body.append( $ul );
-			$body.append( $commitComment );
+			$elmCanvas.append( $ul );
+			$elmCanvas.append( $commitComment );
 
 			px.dialog({
 				'title': divDb[div].label+'をコミットする',
-				'body': $body,
+				'body': $elmCanvas,
 				'buttons':[
 					$('<button>')
 						.text('コミット')
@@ -175,7 +183,6 @@ pickles2Git = function(){
 	this.log = function( div, options, callback ){
 		callback = callback || function(){};
 
-		var $body = $('<div class="px2dt-git-commit">');
 		var $ul = $('<ul class="list-group">');
 
 		px.progress.start({'blindness': true, 'showProgressBar': true});
@@ -225,7 +232,7 @@ pickles2Git = function(){
 				return;
 			}
 
-			$body.html('');
+			$elmCanvas.html('');
 			for( var idx in result ){
 				(function(){
 					var $li = $('<li class="list-group-item px2dt-git-commit__loglist">');
@@ -298,11 +305,11 @@ pickles2Git = function(){
 					$ul.append( $li.append($row).append($detail) );
 				})();
 			}
-			$body.append( $ul );
+			$elmCanvas.append( $ul );
 
 			px.dialog({
 				'title': divDb[div].label + 'のコミットログ',
-				'body': $body,
+				'body': $elmCanvas,
 				'buttons':[
 					$('<button>')
 						.text('閉じる')

@@ -15,7 +15,9 @@ $ npm install
 var Px2Git = require('pickles2-git');
 var px2Git = new Px2Git();
 px2Git.init(
-	{},
+	{
+		'entryScript': require('path').resolve('/path/to/.px_execute.php')
+	},
 	function(){
 		res
 			.status(200)
@@ -54,24 +56,28 @@ px2Git.gpi(
 var px2git = new window.pickles2Git();
 px2git.init(
 	{
+		'elmCanvas': document.getElementById('canvas'),
 		'gpiBridge': function(api, options, callback){
 			// GPI(General Purpose Interface) Bridge
 			// broccoliは、バックグラウンドで様々なデータ通信を行います。
 			// GPIは、これらのデータ通信を行うための汎用的なAPIです。
-			socket.send(
-				'broccoli',
-				{
+			var rtn = false;
+			$.ajax({
+				'url': '/apis/px2git',
+				'data': {
 					'api': 'gpiBridge' ,
 					'bridge': {
 						'api': api ,
 						'options': options
 					}
-				} ,
-				function(rtn){
-					// console.log(rtn);
+				},
+				'success': function(data){
+					rtn = data;
+				},
+				'complete': function(){
 					callback(rtn);
 				}
-			);
+			});
 			return;
 		}
 
