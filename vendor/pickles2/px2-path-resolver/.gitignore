@@ -1,7 +1,0 @@
-.DS_Store
-Thumbs.db
-scss_cache
-/vendor/
-composer.lock
-!*.gitkeep
-~$*
