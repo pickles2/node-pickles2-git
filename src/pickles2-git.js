@@ -185,15 +185,21 @@ pickles2Git = function(){
 	 */
 	this.log = function( div, options, callback ){
 		callback = callback || function(){};
-
 		var $ul = $('<ul class="list-group">');
 
 		function getGitLog(div, options, callback){
 			switch( div ){
 				case 'contents':
-					_this.git.logContents([options.page_path], function(result, err, code){
-						callback(result, err, code);
-					});
+					gpiBridge(
+						'logContents',
+						[options.page_path],
+						function(result){
+							callback(result.result, result.err, result.code);
+						}
+					);
+					// _this.git.logContents([options.page_path], function(result, err, code){
+					// 	callback(result, err, code);
+					// });
 					break;
 				case 'sitemaps':
 					gpiBridge(
@@ -235,8 +241,7 @@ pickles2Git = function(){
 			// console.log(result, err, code);
 			if( result === false ){
 				alert('ERROR: '+err);
-				px.progress.close();
-				callback();
+				callback(false);
 				return;
 			}
 
@@ -263,48 +268,54 @@ pickles2Git = function(){
 							var hash = $(this).attr('data-px2dt-hash');
 							if( $detail.is(':visible') ){
 								$detail.html( '<div class="px2-loading"></div>' );
-								_this.git.show([hash], function(res){
-									if( res.length > 2000 ){
-										// 内容が多すぎると固まるので、途中までで切る。
-										res = res.substr(0, 2000-3) + '...';
-									}
-									// console.log(res);
-									$detail
-										.html( '' )
-										.append( $('<pre>')
-											.text(res)
-											.css({
-												'max-height': 300,
-												'overflow': 'auto'
-											})
-										)
-										.append( $('<button>')
-											.addClass('px2-btn')
-											.addClass('px2-btn--primary')
-											.text('このバージョンまでロールバックする')
-											.click(function(){
-												if( !confirm('この操作は現在の ' + divDb[div].label + ' の変更を破棄します。よろしいですか？') ){
-													return;
-												}
-												px.progress.start({
-													'blindness':true,
-													'showProgressBar': true
-												});
-												getGitRollback(div, options, hash, function(result, err, code){
-													if( result ){
-														alert('ロールバックを完了しました。');
-													}else{
-														alert('[ERROR] ロールバックは失敗しました。');
-														alert(err);
-														console.error('ERROR: ' + err);
+								gpiBridge(
+									'show',
+									[hash],
+									function(result){
+										// console.log(result.result, result.err, result.code);
+										var res = result.result;
+										if( res.length > 2000 ){
+											// 内容が多すぎると固まるので、途中までで切る。
+											res = res.substr(0, 2000-3) + '...';
+										}
+										// console.log(res);
+										$detail
+											.html( '' )
+											.append( $('<pre>')
+												.text(res)
+												.css({
+													'max-height': 300,
+													'overflow': 'auto'
+												})
+											)
+											.append( $('<button>')
+												.addClass('px2-btn')
+												.addClass('px2-btn--primary')
+												.text('このバージョンまでロールバックする')
+												.click(function(){
+													if( !confirm('この操作は現在の ' + divDb[div].label + ' の変更を破棄します。よろしいですか？') ){
+														return;
 													}
-													px.progress.close();
-												});
-												return;
-											})
-										)
-									;
-								});
+													px.progress.start({
+														'blindness':true,
+														'showProgressBar': true
+													});
+													getGitRollback(div, options, hash, function(result, err, code){
+														if( result ){
+															alert('ロールバックを完了しました。');
+														}else{
+															alert('[ERROR] ロールバックは失敗しました。');
+															alert(err);
+															console.error('ERROR: ' + err);
+														}
+														px.progress.close();
+													});
+													return;
+												})
+											)
+										;
+									}
+								);
 							}else{
 								$detail.html( '' );
 							}
@@ -314,23 +325,7 @@ pickles2Git = function(){
 				})();
 			}
 			$elmCanvas.append( $ul );
-
-			px.dialog({
-				'title': divDb[div].label + 'のコミットログ',
-				'body': $elmCanvas,
-				'buttons':[
-					$('<button>')
-						.text('閉じる')
-						.attr({'type':'submit'})
-						.addClass('px2-btn px2-btn--primary')
-						.click(function(){
-							px.closeDialog();
-							callback();
-						})
-				]
-			});
-			px.progress.close();
-
+			callback(true);
 		});
 
 

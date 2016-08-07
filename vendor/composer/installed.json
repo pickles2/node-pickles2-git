@@ -135,61 +135,6 @@
         ]
     },
     {
-        "name": "pickles2/px2-git",
-        "version": "2.0.0-beta.1",
-        "version_normalized": "2.0.0.0-beta1",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/pickles2/px2-git.git",
-            "reference": "45452d06f3d6cebd4e9cc9248a42d55d754130d7"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/pickles2/px2-git/zipball/45452d06f3d6cebd4e9cc9248a42d55d754130d7",
-            "reference": "45452d06f3d6cebd4e9cc9248a42d55d754130d7",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0",
-            "tomk79/filesystem": "1.*",
-            "tomk79/phpgit": "0.3.*",
-            "tomk79/request": "0.1.*"
-        },
-        "require-dev": {
-            "phpdocumentor/phpdocumentor": "2.8.*",
-            "phpunit/phpunit": "4.1.*",
-            "pickles2/broccoli-module-fess": "*",
-            "pickles2/broccoli-module-plain-html-elements": "*",
-            "pickles2/px-fw-2.x": "2.0.*",
-            "pickles2/px2-dec": "dev-master",
-            "pickles2/px2-multitheme": "2.*",
-            "pickles2/px2-path-resolver": "2.*",
-            "pickles2/px2-sitemapexcel": "2.*"
-        },
-        "time": "2016-06-15 10:15:58",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "php/px2-git.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Tomoya Koyanagi",
-                "email": "tomk79@gmail.com"
-            }
-        ],
-        "description": "Pickles 2 のプロジェクトデータに最適化された git 関連APIを提供します。",
-        "keywords": [
-            "pickles"
-        ]
-    },
-    {
         "name": "symfony/options-resolver",
         "version": "v3.1.3",
         "version_normalized": "3.1.3.0",
@@ -952,6 +897,61 @@
             }
         ],
         "description": "Pickles2 に、サイトマップをグラフィカルなエクセル形式(xlsx)で編集できる機能を追加します。",
+        "keywords": [
+            "pickles"
+        ]
+    },
+    {
+        "name": "pickles2/px2-git",
+        "version": "dev-develop",
+        "version_normalized": "dev-develop",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pickles2/px2-git.git",
+            "reference": "26ca91bbdb51bd36daf7fba6a81d6a3110ed0566"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pickles2/px2-git/zipball/26ca91bbdb51bd36daf7fba6a81d6a3110ed0566",
+            "reference": "26ca91bbdb51bd36daf7fba6a81d6a3110ed0566",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "tomk79/filesystem": "1.*",
+            "tomk79/phpgit": "0.3.*",
+            "tomk79/request": "0.1.*"
+        },
+        "require-dev": {
+            "phpdocumentor/phpdocumentor": "2.8.*",
+            "phpunit/phpunit": "4.1.*",
+            "pickles2/broccoli-module-fess": "*",
+            "pickles2/broccoli-module-plain-html-elements": "*",
+            "pickles2/px-fw-2.x": "2.0.*",
+            "pickles2/px2-dec": "dev-master",
+            "pickles2/px2-multitheme": "2.*",
+            "pickles2/px2-path-resolver": "2.*",
+            "pickles2/px2-sitemapexcel": "2.*"
+        },
+        "time": "2016-08-07 12:06:22",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "files": [
+                "php/px2-git.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Tomoya Koyanagi",
+                "email": "tomk79@gmail.com"
+            }
+        ],
+        "description": "Pickles 2 のプロジェクトデータに最適化された git 関連APIを提供します。",
         "keywords": [
             "pickles"
         ]

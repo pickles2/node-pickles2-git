@@ -20,7 +20,7 @@ module.exports = function() {
 		callback = callback || function(){}
 		options = options || {};
 
-		entryScript = options.entry_script || null;
+		entryScript = options.entryScript || null;
 		nodePhpBin = require('node-php-bin').get();
 
 		callback();
@@ -72,17 +72,19 @@ module.exports = function() {
 				nodePhpBin.script(
 					[
 						path_px2git,
-						utils79.base64_encode(JSON.stringify(param))
+						utils79.base64_encode( JSON.stringify( param ) )
 					],
 					{
 						"success": function(data){
 							rtn += data;
+							// console.log('++++++++++++++++++++++');
 							// console.log(data);
 						} ,
 						"error": function(data){
 							rtn += data;
 							err += data;
-							console.log(data);
+							// console.log('++++++++++++++++++++++');
+							// console.error(data);
 						} ,
 						"complete": function(data, error, code){
 							setTimeout(function(){
@@ -91,6 +93,7 @@ module.exports = function() {
 								} catch (e) {
 									console.error('Failed to parse JSON string.');
 									console.error(rtn);
+									err += 'Failed to parse JSON string.';
 									rtn = false;
 								}
 								console.log(rtn, err, code);

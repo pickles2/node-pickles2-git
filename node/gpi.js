@@ -8,9 +8,18 @@ module.exports = function(px2Git, data, callback){
 	callback = callback || function(){};
 
 	switch(data.api){
-		case "logSitemaps":
-			// sitemap のコミットログを取得する
-			px2Git.logSitemaps(data.options, function(result, err, code){
+		case 'status':
+		case 'statusContents':
+		case 'commitSitemaps':
+		case 'commitContents':
+		case 'log':
+		case 'logContents':
+		case 'logSitemaps':
+		case 'show':
+		case 'rollbackSitemaps':
+		case 'rollbackContents':
+			px2Git[data.api](data.options, function(result, err, code){
+				// console.log(result);
 				callback({
 					'result': result,
 					'err': err,
@@ -20,7 +29,7 @@ module.exports = function(px2Git, data, callback){
 			break;
 
 		default:
-			callback(true);
+			callback(false);
 			break;
 	}
 

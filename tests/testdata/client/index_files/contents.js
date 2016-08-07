@@ -29,7 +29,8 @@ $(window).load(function(){
 
 		}, function(){
 			px2git.log('sitemaps', {}, function(){
-				console.log(px2git);
+				// console.log(px2git);
+				console.log('pickles2Git standby.');
 			});
 		}
 	);

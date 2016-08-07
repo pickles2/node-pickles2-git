@@ -31,8 +31,8 @@ class ComposerStaticInit8107408a6b8da1cc17a747b14e3644b7
         '9ddceeda32d6e76d780f774b6524ba80' => __DIR__ . '/..' . '/pickles2/px2-path-resolver/php/pathResolver.php',
         '9c4ab44d3fe8daa40b11db1a6ee7336e' => __DIR__ . '/..' . '/pickles2/px2-path-resolver/php/resolveCommonContents.php',
         'f43d9e68e0da150ca7bf26501c6222c2' => __DIR__ . '/..' . '/pickles2/px2-path-resolver/php/simple_html_dom.php',
-        '9684caf6a1b0fe8ffe724f5f68c45672' => __DIR__ . '/..' . '/pickles2/px2-git/php/px2-git.php',
         '316d4f7cda359585ef9fa19732228538' => __DIR__ . '/..' . '/pickles2/px2-remove-attr/php/main.php',
+        '9684caf6a1b0fe8ffe724f5f68c45672' => __DIR__ . '/..' . '/pickles2/px2-git/php/px2-git.php',
     );
 
     public static $prefixLengthsPsr4 = array (
