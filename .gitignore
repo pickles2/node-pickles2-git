@@ -35,3 +35,20 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# composer
+vendor/bin
+vendor/leafo
+vendor/michelf
+vendor/phpoffice
+vendor/pickles2/broccoli-module-fess
+vendor/pickles2/broccoli-module-plain-html-elements
+vendor/pickles2/px-fw-2.x
+vendor/pickles2/px2-multitheme
+vendor/pickles2/px2-path-resolver
+vendor/pickles2/px2-remove-attr
+vendor/pickles2/px2-sitemapexcel
+vendor/symfony
+vendor/tomk79/filesystem
+vendor/tomk79/php-excel2html
+vendor/tomk79/request

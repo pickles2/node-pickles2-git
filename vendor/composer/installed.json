@@ -48,79 +48,43 @@
         "description": "A Git wrapper for PHP5.3+"
     },
     {
-        "name": "tomk79/filesystem",
-        "version": "1.0.5",
-        "version_normalized": "1.0.5.0",
+        "name": "pickles2/px2-git",
+        "version": "dev-develop",
+        "version_normalized": "dev-develop",
         "source": {
             "type": "git",
-            "url": "https://github.com/tomk79/filesystem.git",
-            "reference": "68ce4189b12f5809f4baa88806175b1989f7d76a"
+            "url": "https://github.com/pickles2/px2-git.git",
+            "reference": "26ca91bbdb51bd36daf7fba6a81d6a3110ed0566"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/tomk79/filesystem/zipball/68ce4189b12f5809f4baa88806175b1989f7d76a",
-            "reference": "68ce4189b12f5809f4baa88806175b1989f7d76a",
+            "url": "https://api.github.com/repos/pickles2/px2-git/zipball/26ca91bbdb51bd36daf7fba6a81d6a3110ed0566",
+            "reference": "26ca91bbdb51bd36daf7fba6a81d6a3110ed0566",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.0"
+            "php": ">=5.4.0",
+            "tomk79/filesystem": "1.*",
+            "tomk79/phpgit": "0.3.*",
+            "tomk79/request": "0.1.*"
         },
         "require-dev": {
             "phpdocumentor/phpdocumentor": "2.8.*",
-            "phpunit/phpunit": "4.1.*"
+            "phpunit/phpunit": "4.1.*",
+            "pickles2/broccoli-module-fess": "*",
+            "pickles2/broccoli-module-plain-html-elements": "*",
+            "pickles2/px-fw-2.x": "2.0.*",
+            "pickles2/px2-dec": "dev-master",
+            "pickles2/px2-multitheme": "2.*",
+            "pickles2/px2-path-resolver": "2.*",
+            "pickles2/px2-sitemapexcel": "2.*"
         },
-        "time": "2015-09-03 07:06:37",
+        "time": "2016-08-07 12:06:22",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "files": [
-                "php/filesystem.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Tomoya Koyanagi",
-                "email": "tomk79@gmail.com",
-                "homepage": "http://www.pxt.jp/"
-            }
-        ],
-        "description": "Simple filesystem utility for PHP.",
-        "keywords": [
-            "filesystem"
-        ]
-    },
-    {
-        "name": "tomk79/request",
-        "version": "0.1.4",
-        "version_normalized": "0.1.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/tomk79/request.git",
-            "reference": "5b008a93f03899c101c9bd67a057100011e72782"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/tomk79/request/zipball/5b008a93f03899c101c9bd67a057100011e72782",
-            "reference": "5b008a93f03899c101c9bd67a057100011e72782",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0",
-            "tomk79/filesystem": "1.*"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "4.1.*"
-        },
-        "time": "2015-03-18 15:24:07",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "php/request.php"
+                "php/px2-git.php"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -132,114 +96,11 @@
                 "name": "Tomoya Koyanagi",
                 "email": "tomk79@gmail.com"
             }
-        ]
-    },
-    {
-        "name": "symfony/options-resolver",
-        "version": "v3.1.3",
-        "version_normalized": "3.1.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/options-resolver.git",
-            "reference": "30605874d99af0cde6c41fd39e18546330c38100"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/options-resolver/zipball/30605874d99af0cde6c41fd39e18546330c38100",
-            "reference": "30605874d99af0cde6c41fd39e18546330c38100",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "time": "2016-05-12 15:59:27",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\OptionsResolver\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
         ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony OptionsResolver Component",
-        "homepage": "https://symfony.com",
+        "description": "Pickles 2 のプロジェクトデータに最適化された git 関連APIを提供します。",
         "keywords": [
-            "config",
-            "configuration",
-            "options"
+            "pickles"
         ]
-    },
-    {
-        "name": "symfony/process",
-        "version": "v3.1.3",
-        "version_normalized": "3.1.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/process.git",
-            "reference": "04c2dfaae4ec56a5c677b0c69fac34637d815758"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/process/zipball/04c2dfaae4ec56a5c677b0c69fac34637d815758",
-            "reference": "04c2dfaae4ec56a5c677b0c69fac34637d815758",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "time": "2016-07-28 11:13:48",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Process\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Process Component",
-        "homepage": "https://symfony.com"
     },
     {
         "name": "pickles2/broccoli-module-plain-html-elements",
@@ -503,6 +364,52 @@
         ]
     },
     {
+        "name": "tomk79/filesystem",
+        "version": "1.0.5",
+        "version_normalized": "1.0.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tomk79/filesystem.git",
+            "reference": "68ce4189b12f5809f4baa88806175b1989f7d76a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/tomk79/filesystem/zipball/68ce4189b12f5809f4baa88806175b1989f7d76a",
+            "reference": "68ce4189b12f5809f4baa88806175b1989f7d76a",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpdocumentor/phpdocumentor": "2.8.*",
+            "phpunit/phpunit": "4.1.*"
+        },
+        "time": "2015-09-03 07:06:37",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "php/filesystem.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Tomoya Koyanagi",
+                "email": "tomk79@gmail.com",
+                "homepage": "http://www.pxt.jp/"
+            }
+        ],
+        "description": "Simple filesystem utility for PHP.",
+        "keywords": [
+            "filesystem"
+        ]
+    },
+    {
         "name": "tomk79/php-excel2html",
         "version": "0.0.4",
         "version_normalized": "0.0.4.0",
@@ -646,6 +553,47 @@
         "description": "px2-remove-attr は、Pickles 2 に、HTMLドキュメントから指定した属性を削除する機能を提供します。",
         "keywords": [
             "pickles"
+        ]
+    },
+    {
+        "name": "tomk79/request",
+        "version": "0.1.4",
+        "version_normalized": "0.1.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tomk79/request.git",
+            "reference": "5b008a93f03899c101c9bd67a057100011e72782"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/tomk79/request/zipball/5b008a93f03899c101c9bd67a057100011e72782",
+            "reference": "5b008a93f03899c101c9bd67a057100011e72782",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0",
+            "tomk79/filesystem": "1.*"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.1.*"
+        },
+        "time": "2015-03-18 15:24:07",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "php/request.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Tomoya Koyanagi",
+                "email": "tomk79@gmail.com"
+            }
         ]
     },
     {
@@ -902,43 +850,37 @@
         ]
     },
     {
-        "name": "pickles2/px2-git",
-        "version": "dev-develop",
-        "version_normalized": "dev-develop",
+        "name": "symfony/options-resolver",
+        "version": "v3.1.3",
+        "version_normalized": "3.1.3.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/pickles2/px2-git.git",
-            "reference": "26ca91bbdb51bd36daf7fba6a81d6a3110ed0566"
+            "url": "https://github.com/symfony/options-resolver.git",
+            "reference": "30605874d99af0cde6c41fd39e18546330c38100"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/pickles2/px2-git/zipball/26ca91bbdb51bd36daf7fba6a81d6a3110ed0566",
-            "reference": "26ca91bbdb51bd36daf7fba6a81d6a3110ed0566",
+            "url": "https://api.github.com/repos/symfony/options-resolver/zipball/30605874d99af0cde6c41fd39e18546330c38100",
+            "reference": "30605874d99af0cde6c41fd39e18546330c38100",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.4.0",
-            "tomk79/filesystem": "1.*",
-            "tomk79/phpgit": "0.3.*",
-            "tomk79/request": "0.1.*"
+            "php": ">=5.5.9"
         },
-        "require-dev": {
-            "phpdocumentor/phpdocumentor": "2.8.*",
-            "phpunit/phpunit": "4.1.*",
-            "pickles2/broccoli-module-fess": "*",
-            "pickles2/broccoli-module-plain-html-elements": "*",
-            "pickles2/px-fw-2.x": "2.0.*",
-            "pickles2/px2-dec": "dev-master",
-            "pickles2/px2-multitheme": "2.*",
-            "pickles2/px2-path-resolver": "2.*",
-            "pickles2/px2-sitemapexcel": "2.*"
-        },
-        "time": "2016-08-07 12:06:22",
+        "time": "2016-05-12 15:59:27",
         "type": "library",
-        "installation-source": "source",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.1-dev"
+            }
+        },
+        "installation-source": "dist",
         "autoload": {
-            "files": [
-                "php/px2-git.php"
+            "psr-4": {
+                "Symfony\\Component\\OptionsResolver\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -947,13 +889,71 @@
         ],
         "authors": [
             {
-                "name": "Tomoya Koyanagi",
-                "email": "tomk79@gmail.com"
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
             }
         ],
-        "description": "Pickles 2 のプロジェクトデータに最適化された git 関連APIを提供します。",
+        "description": "Symfony OptionsResolver Component",
+        "homepage": "https://symfony.com",
         "keywords": [
-            "pickles"
+            "config",
+            "configuration",
+            "options"
         ]
+    },
+    {
+        "name": "symfony/process",
+        "version": "v3.1.3",
+        "version_normalized": "3.1.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/process.git",
+            "reference": "04c2dfaae4ec56a5c677b0c69fac34637d815758"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/process/zipball/04c2dfaae4ec56a5c677b0c69fac34637d815758",
+            "reference": "04c2dfaae4ec56a5c677b0c69fac34637d815758",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9"
+        },
+        "time": "2016-07-28 11:13:48",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Process\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Process Component",
+        "homepage": "https://symfony.com"
     }
 ]
