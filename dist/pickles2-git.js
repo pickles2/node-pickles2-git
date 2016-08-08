@@ -10105,7 +10105,7 @@ pickles2Git = function(){
 		options = options || {};
 
 		$elmCanvas = $(options.elmCanvas || doucment.createElement('div'));
-		$elmCanvas.addClass('px2dt-git-commit');
+		$elmCanvas.addClass( cssClassPrefix );
 
 		gpiBridge = options.gpiBridge || function(){};
 
@@ -10193,7 +10193,6 @@ pickles2Git = function(){
 			// console.log(result, err, code);
 			if( result === false ){
 				alert('ERROR: '+err);
-				px.progress.close();
 				callback();
 				return;
 			}
@@ -10207,7 +10206,6 @@ pickles2Git = function(){
 			}
 			if( !list.length ){
 				alert('コミットできる変更がありません。');
-				px.progress.close();
 				callback();
 				return;
 			}
@@ -10231,13 +10229,10 @@ pickles2Git = function(){
 						.attr({'type':'submit'})
 						.addClass('px2-btn px2-btn--primary')
 						.click(function(){
-							px.progress.start({'blindness': true, 'showProgressBar': true});
 							var commitComment = $commitComment.val();
 							// console.log(commitComment);
 							gitCommit(div, options, commitComment, function(){
 								alert('コミットしました。');
-								px.progress.close();
-								px.closeDialog();
 								callback();
 							});
 						}),
@@ -10245,7 +10240,7 @@ pickles2Git = function(){
 						.text('キャンセル')
 						.addClass('px2-btn')
 						.click(function(){
-							px.closeDialog();
+							console.log('canceled.');
 						})
 				]
 			});
@@ -10281,7 +10276,7 @@ pickles2Git = function(){
 				case 'sitemaps':
 					gpiBridge(
 						'logSitemaps',
-						{},
+						[],
 						function(result){
 							callback(result.result, result.err, result.code);
 						}
@@ -10299,14 +10294,28 @@ pickles2Git = function(){
 		function getGitRollback(div, options, hash, callback){
 			switch( div ){
 				case 'contents':
-					_this.git.rollbackContents([options.page_path, hash], function(result, err, code){
-						callback(result, err, code);
-					});
+					gpiBridge(
+						'rollbackContents',
+						[options.page_path, hash],
+						function(result){
+							callback(result.result, result.err, result.code);
+						}
+					);
+					// _this.git.rollbackContents([options.page_path, hash], function(result, err, code){
+					// 	callback(result, err, code);
+					// });
 					break;
 				case 'sitemaps':
-					_this.git.rollbackSitemaps([hash], function(result, err, code){
-						callback(result, err, code);
-					});
+					gpiBridge(
+						'rollbackSitemaps',
+						[hash],
+						function(result){
+							callback(result.result, result.err, result.code);
+						}
+					);
+					// _this.git.rollbackSitemaps([hash], function(result, err, code){
+					// 	callback(result, err, code);
+					// });
 					break;
 				default:
 					break;
@@ -10373,10 +10382,6 @@ pickles2Git = function(){
 													if( !confirm('この操作は現在の ' + divDb[div].label + ' の変更を破棄します。よろしいですか？') ){
 														return;
 													}
-													px.progress.start({
-														'blindness':true,
-														'showProgressBar': true
-													});
 													getGitRollback(div, options, hash, function(result, err, code){
 														if( result ){
 															alert('ロールバックを完了しました。');
@@ -10385,7 +10390,6 @@ pickles2Git = function(){
 															alert(err);
 															console.error('ERROR: ' + err);
 														}
-														px.progress.close();
 													});
 													return;
 												})
