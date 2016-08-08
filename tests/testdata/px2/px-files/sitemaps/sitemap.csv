@@ -1,12 +1,6 @@
 "* path","* content","* id","* title","* title_breadcrumb","* title_h1","* title_label","* title_full","* logical_path","* list_flg","* layout","* orderby","* keywords","* description","* category_top_flg","* role","* **delete_flg"
 "/index.html",,,"ホーム",,,,,,1,"top",,,,,,
 "/sample_pages/index.html",,,"サンプルページ1",,,,,,1,,,"sample, サンプル","このページはPxFWのサンプルコードとして予め用意されたものです。サンプルが不要であれば、sample_pagesディレクトリとともに削除してください。",1,,
-"/sample_pages/fess/index.html",,,"FESSスタイルガイド",,,,,"/sample_pages/index.html",1,,,,,,,
-"/sample_pages/fess/units/index.html",,,"ユニットモジュール",,,,,"/sample_pages/index.html>/sample_pages/fess/index.html",1,,,,,,,
-"/sample_pages/fess/parts/index.html",,,"パーツモジュール",,,,,"/sample_pages/index.html>/sample_pages/fess/index.html",1,,,,,,,
-"/sample_pages/fess/statics/index.html",,,"スタティックモジュール",,,,,"/sample_pages/index.html>/sample_pages/fess/index.html",1,,,,,,,
-"/sample_pages/fess/boxes/index.html",,,"ボックスモジュール",,,,,"/sample_pages/index.html>/sample_pages/fess/index.html",1,,,,,,,
-"/sample_pages/bootstrap/index.html",,,"Bootstrapスタイルガイド",,,,,"/sample_pages/index.html",1,,,,,,,
 "/sample_pages/page1/1.html",,,"ページタイトル","ページタイトル(パンくずのラベル)","ページタイトル
 (H1見出しのラベル)","ページタイトル(リンクのラベル)",,"/sample_pages/index.html",1,,,"sample, サンプル","このページはPxFWのサンプルコードとして予め用意されたものです。サンプルが不要であれば、sample_pagesディレクトリとともに削除してください。",,,
 "/sample_pages/page1/2.html",,,"PHPコード埋め込み",,,,,"/sample_pages/index.html",1,,,"sample, サンプル","このページはPxFWのサンプルコードとして予め用意されたものです。サンプルが不要であれば、sample_pagesディレクトリとともに削除してください。",,,
