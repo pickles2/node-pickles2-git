@@ -74,20 +74,31 @@ pickles2Git = function(){
 		var $ul = $('<ul class="list-group">');
 		var $commitComment = $('<textarea>');
 
-		px.progress.start({'blindness': true, 'showProgressBar': true});
-
-
 		function getGitStatus(div, options, callback){
 			switch( div ){
 				case 'contents':
-					_this.git.statusContents([options.page_path], function(result, err, code){
-						callback(result, err, code);
-					});
+					gpiBridge(
+						'statusContents',
+						[options.page_path],
+						function(result){
+							callback(result.result, result.err, result.code);
+						}
+					);
+					// _this.git.statusContents([options.page_path], function(result, err, code){
+					// 	callback(result, err, code);
+					// });
 					break;
 				default:
-					_this.git.status(function(result, err, code){
-						callback(result, err, code);
-					});
+					gpiBridge(
+						'status',
+						[],
+						function(result){
+							callback(result.result, result.err, result.code);
+						}
+					);
+					// _this.git.status(function(result, err, code){
+					// 	callback(result, err, code);
+					// });
 					break;
 			}
 			return;
@@ -96,14 +107,28 @@ pickles2Git = function(){
 		function gitCommit(div, options, commitComment, callback){
 			switch( div ){
 				case 'contents':
-					_this.git.commitContents([options.page_path, commitComment], function(){
-						callback();
-					});
+					gpiBridge(
+						'commitContents',
+						[options.page_path, commitComment],
+						function(result){
+							callback(result.result, result.err, result.code);
+						}
+					);
+					// _this.git.commitContents([options.page_path, commitComment], function(){
+					// 	callback();
+					// });
 					break;
 				case 'sitemaps':
-					_this.git.commitSitemap([commitComment], function(){
-						callback();
-					});
+					gpiBridge(
+						'commitSitemap',
+						[commitComment],
+						function(result){
+							callback(result.result, result.err, result.code);
+						}
+					);
+					// _this.git.commitSitemap([commitComment], function(){
+					// 	callback();
+					// });
 					break;
 				default:
 					callback();
@@ -167,7 +192,6 @@ pickles2Git = function(){
 						})
 				]
 			});
-			px.progress.close();
 
 		});
 
