@@ -1,0 +1,35 @@
+{
+    "name": "tomk79/phpgit",
+    "description": "A Git wrapper for PHP5.3+",
+    "license": "MIT",
+    "scripts":{
+        "test": [
+            "php ./vendor/phpunit/phpunit/phpunit"
+        ]
+    } ,
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Kazuyuki Hayashi",
+            "email": "hayashi@valnur.net"
+        },
+        {
+            "name": "Tomoya Koyanagi",
+            "email": "tom_k79@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/process":">=2.3",
+        "symfony/options-resolver": ">=2.3"
+    },
+    "require-dev": {
+        "symfony/filesystem": ">=2.3",
+        "phpunit/phpunit": "^4.8"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src"
+        }
+    }
+}
